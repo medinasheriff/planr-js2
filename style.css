@@ -1,0 +1,52 @@
+.content-container {
+    background: rgb(214, 214, 243);
+    margin:10px;
+    height: 90vh;
+
+}
+
+
+
+.tablePage {
+    display: none;
+    width:90%;
+}
+
+table,
+th,
+td {
+    width: 80%;
+    background-color: rgb(248, 244, 244);
+    border-bottom: 1px solid rgb(219, 216, 216);
+    border-radius: 3px;
+    padding: 6px 2px;
+    margin: 5% auto;
+}
+
+.topnav a:hover {
+    border-bottom: 3px solid blue;
+  }
+  
+  .topnav a.active {
+    border-bottom: 3px solid blue;
+  }
+  .topnav a{
+    color: black;
+  }
+  #showstrategy {
+    display: none;
+}
+.status-complete{
+  color: green;
+}
+.status-ongoing{
+  color: rgb(241, 179, 6);
+}
+.status-pending{
+  color: gray;
+}
+.status-failed{
+  color: red;
+}
+
+

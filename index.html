@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <title>planr with bootstrap</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="script.js"defer></script> 
+</head>
+<body>
+    <!-- page start -->
+    <!-- nav bar -->
+    <nav class="navbar py-4">
+      <div class="container">
+        <h2>Manage Campaigns</h2>
+         <button type="button" class="btn btn-primary addCampaign" data-bs-toggle="modal" data-bs-target="#myModal" ms-auto>Add Campaign</button> 
+         <!-- <button type="buttom" class="btn btn-primary addCampaign">add campaign</button>  -->
+      </div>
+    </nav>
+
+    <!-- empty campaign page -->
+    <div class="content-container p-5 text-center">
+        <div class="content">
+         <div class="d-sm-flex position-absolute top-50 start-50">
+            <img src="assets/journal.png" alt="An image of a journal and pen" height="80">
+            <p class="intro my-4 mx-4">
+                No campaigns found. <a type="text" data-bs-toggle="modal" data-bs-target="#myModal" href="#">Add Campaign</a> to begin recording<br> 
+                and managing campaigns.
+            </p>
+         </div>
+        </div>
+
+          <!--Table page-->
+      <div class="tablePage">
+        <input type="text" class="search" name="search" placeholder="search campaign">
+
+    <table>
+       
+        <thead>
+            <tr>
+                <th>CAMPAIGN NAME</th>
+                <th>TYPE</th>
+                <th>STATUS</th>
+            </tr>
+        </thead>
+    
+        <tbody id="result"></tbody>
+    </table>
+</div>
+        
+    </div>
+
+
+    <!-- modal form start-->
+
+    <div class="modal modal-lg" tabindex="-1" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!--modal header-->
+                <div class="modal-header">
+                    <h3 class="modal-title">Add/Edit Campaign</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!--modal content-->
+                <!-- first modal section -->
+
+                <div class="modal-body">
+                    <form>
+                        <div class="row pb-3">
+                            <div class="col-sm-3">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control campaign_name" id="campaignname" placeholder="Campaign Name" required> 
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="type">Campaign Type</label>
+                                <select class="form-control form-select campaign_type" required>
+                                    <option value="" disabled selected hidden>Campaign Type</option>
+                                    <option value="Covid">Covid</option> 
+                                    <option value="AMR Screening">AMR Screening</option>
+                                    <option value="HPV Screening">HPV Screening</option>
+                                    <option value="Routine Immunization">Routine Immunization</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="duration">Duration</label>
+                                <input class="form-control duration_start_date" type="text" onfocus="(this.type='date')" id="sDate" placeholder="Start Date" required>
+                            </div>
+                              <div class="col-sm-3">
+                                <label for="duration"></label>
+                                <input class="form-control duration_end_date" type="text" onfocus="(this.type='date')" id="eDate" placeholder="End Date" required>
+                              </div>
+                            
+                        </div>
+                        
+
+                        <!--Second modal section-->
+
+                        <!-- the location and strategy nav tabs -->
+                        
+                        <ul class="nav pt-5 nav-pills nav-tabs topnav" id="myTab" role="tablist">
+                            <li class="nav-item " >
+                                <a class="nav-link " id="hide" data-toggle="tab" href="#" role="tab">Location</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="show" data-toggle="tab" href="#" role="tab">Strategy</a>
+                            </li>                    
+                        </ul>
+                        <!-- location tab content -->
+                        <div class="tab-content pt-3 ">
+                            <div class="tab-panel container fade show active" id="location" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label for="states">State</label>
+                                        <select class="form-control form-select" id="state">
+                                            <option value="" disabled selected hidden>State</option>
+                                            <option value="Abia">Abia</option>
+                                            <option value="Abuja">Abuja</option>
+                                            <option value="Akwa ibom">Akwa Ibom</option>
+                                            <option value="Borno">Borno</option>
+                                            <option value="Bauchi">Bauchi</option>
+                                            <option value="Jigawa">Jigawa</option>
+                                            <option value="Kano">Kano</option>
+                                            <option value="Kebbi">Kebbi</option>
+                                            <option value="Sokoto">Sokoto</option>
+                                            <option value="Yobe">Yobe</option>
+                                            </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="lga">LGA</label>
+                                        <select class="form-control form-select" id="lga">
+                                            <option value="" disabled selected hidden>LGA</option>
+                                            <option value="metropolis">MMC</option>
+                                            <option value="dambua">Danbua</option>
+                                            <option value="gwarzo">Gwarzo</option>
+                                            <option value="kari">Kari</option>
+                                            <option value="darazo">Darazo</option>
+                                            <option value="baga">Baga</option>
+                                            <option value="ibeno">Ibeno</option>
+                                            <option value="ikot abasi">Ikot abasi</option>
+                                            <option value="tofa">Tofa</option>
+                                            <option value="sabon gari">Sabon Gari</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="ward">Ward</label>
+                                        <select class="form-control form-select" id="ward">
+                                            <option value="" disabled selected hidden>Ward</option>
+                                            <option value="Ward 1">Ward 1</option>
+                                            <option value="Ward 2">Ward 2</option>
+                                            <option value="Ward 3">Ward 3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- strategy tab content -->
+                            <div class="tab-panel container" id="showstrategy" role="tabpanel">
+                                <div class="row ">
+                                    <div class="col-md-4">
+                                            <div>
+                                                <h5><input class="form-check-input" name="radioinput" type="radio"> <strong>Use Fixed Post</strong></h5>
+                                                     select this strategy for field <br>
+                                                     work conducted within 2km <br>
+                                                     of a Health <br>
+                                                     Facility (HF).</p>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-4" >
+                                        <div>
+                                            <h5><input class="form-check-input" name="radioinput" type="radio"> <strong>Use Outreach Session</strong></h5>
+                                                <p>Select this strategy for field<br>
+                                                   work conducted 2 - 6km <br>
+                                                   from a Health<br>
+                                                   Facility.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div>
+                                            <h5><input class="form-check-input" name="radioinput" type="radio"> <strong>Use Mobile Session</strong></h5>
+                                            <p>Select this strategy for field <br>
+                                                work conducted 6km+ <br>
+                                                from a Health<br>
+                                                Facility.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>     
+                    </form>
+                </div>
+            
+
+                <!--modal footer-->
+                <div class="modal-footer px-5 pb-5">
+                    <button type="button" class="btn btn-secondary btn-sm cancel" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary btn-sm px-3 save" data-bs-dismiss="modal" >Save</button>
+                  </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end of modal content -->
+     
+
+     <!-- <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title">Add/Edit Campaign</h2>
+              
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div id="form">
+                        <div class="name">
+                            <label for="name">Name</label>
+                            <input type="text" class="campaign_name" placeholder="Campaign Name">
+                        </div>
+                        <div class="type vr" >
+                            <label for="type">Campaign Type</label>
+                            <select class="campaign_type" required>
+                                <option value="" disabled selected hidden>Campaign Type</option>
+                                <option value="Routine Immunization">Routine Immunization</option>
+                                <option value="Covid">Covid</option>
+                            </select>
+                        </div>
+                        <div class="duration vr">
+                            <label for="duration">Duration</label>
+        
+                            <input class="duration_start_date" type="date" placeholder="Start Date">
+        
+                            <input type="date" placeholder="End Date">
+                        </div>
+                    </div>
+                </form>
+
+                location content section
+                <div id="tabs">
+                    <a href="#tab1" class="b">Location</a>
+                    <a href="#tab2" class="b">Strategy</a>
+                    <hr>
+    
+                    <section id="tab1">
+                        
+                        <div>
+                            <label for="type">STATE</label>
+                            <select required>
+                                <option value="" disabled selected hidden>State</option>
+                                <option value="borno">Borno</option>
+                                <option value="kano">Kano</option>
+                                <option value="yobe">Yobe</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="type">LGA</label>
+                            <select required>
+                                <option value="" disabled selected hidden>LGA</option>
+                                <option value="RI">MMC</option>
+                                <option value="Covid">Danboa</option>
+                                <option value="Covid">Gwarzo</option>
+                                <option value="Covid">Gwale</option>
+                                <option value="Covid">Gubiya</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="type">WARD</label>
+                            <select required>
+                                <option value="" disabled selected hidden>Ward</option>
+                                <option value="RI">Ward 1</option>
+                                <option value="Covid">Ward 2</option>
+                            </select>
+                        </div>
+                    </section>
+
+                    strategy content section
+                    <section id="tab2">
+                        <div id="strategy">
+                            <div>
+                                <h4><input class="radio" type="radio">Use Fixed Post</h4>
+                                <p>select this strategy for field work<br> conducted within 2km of a Health<br> Facility (HF).</p>
+                            </div>
+                            <div>
+                                <h4><input class="radio" type="radio">Use Outreach Session</h4>
+                                <p>Select this strategy for field work<br>
+                                    conducted 2 - 6km from a Health<br>
+                                    Facility.</p>
+                            </div>
+                            <div>
+                                <h4><input class="radio" type="radio">Use Mobile Session</h4>
+                                <p>Select this strategy for field work<br>
+                                    conducted 6km+ from a Health<br>
+                                    Facility.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-md" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary btn-md">Save</button>
+            </div>
+          </div>
+       </div>
+    </div>  -->
+     
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    
+</body>
+</html>
+ 
