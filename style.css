@@ -1,3 +1,8 @@
+* {
+  box-sizing: border-box;
+}
+
+
 .content-container {
     background: rgb(214, 214, 243);
     margin:10px;
@@ -9,7 +14,17 @@
 
 .tablePage {
     display: none;
-    width:90%;
+    width:100%;
+}
+
+.search {
+  border: 1px solid rgb(167, 166, 166);
+  border-radius: 4px;
+  padding: 8px 12px;
+}
+
+#result a {
+text-decoration: none;
 }
 
 table,
@@ -21,6 +36,11 @@ td {
     border-radius: 3px;
     padding: 6px 2px;
     margin: 5% auto;
+    text-align: left;
+}
+
+td {
+  white-space: nowrap;
 }
 
 .topnav a:hover {
