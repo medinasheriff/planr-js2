@@ -21,10 +21,17 @@
   border: 1px solid rgb(167, 166, 166);
   border-radius: 4px;
   padding: 8px 12px;
+  width: 90%;
+  max-width: 300px;
+
 }
 
 #result a {
 text-decoration: none;
+}
+.tableContainer {
+    display: flex;
+    flex-direction: column;
 }
 
 table,
